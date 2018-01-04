@@ -1,0 +1,22 @@
+<html>
+<head>
+<style>
+</style>
+<title>課題トップ</title>
+<%= stylesheet_link_tag "application", :media => "all" %>
+</head>
+
+<h2>Editing book</h2>
+<%= form_for @post, url: post_path(@post) do |f| %>
+<p><label>Title</label><p>
+<p><%= f.text_field :title %><p>
+<p><label>Body</label><p>
+<p><%= f.text_area :body %><p>
+<p><%= f.submit 'Update book' %></p>
+<p><!--<a href="#">Show</a>-->
+<%=link_to "Show", post_path(@post) %>|<%=link_to "Back", posts_path%>
+<%end%>
+
+
+</body>
+</html>
