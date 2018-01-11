@@ -1,0 +1,64 @@
+<!--books全ユーザーの投稿一覧-->
+
+<!--<h1>books#index</h1>
+<p>Find me in app/views/books/index.html.erb</p>
+<p>全共通コード(heade)(footer)app/views/layouts/application.html.erb</p>
+<p>部分共通コード(left_side)/app/views/books/_list.html.erb</p>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookers</title>
+  <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+
+<!--ユーザー一覧-->
+<div class="body">
+<div class="container">
+<p id="notice"></p>
+<div class="row">
+
+<!--共通項ここから-->
+<!--ユーザ画面-->
+<%= render 'books/list' %>
+<!--共通項ここまで-->
+
+
+
+
+<!--ユーザー一覧-->
+<div class="col-lg-9">
+<div class="container  col-lg-12">
+  <h2>Books</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% @books.each do |book| %>
+      <tr>
+        <td>
+       <%= link_to book.user do %>
+        <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50,  fallback: "default.jpg"%>
+       <% end %>
+      </td>
+        <td><%=link_to book.title ,book_path(book.id)%></td>
+        <td><%=book.opinion %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</html>
